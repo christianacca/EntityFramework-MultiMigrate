@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CmdLineTests\MultiMigrationTests.cs" />
     <Compile Include="CmdLineTests\ToolingFacadeTests.cs" />
     <Compile Include="MultiMigrateDbToLastestVersionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,12 +63,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="CmdLineTests\migrators-config.json" />
-    <None Include="CmdLineTests\run-multimigrate-eg1.bat" />
-    <None Include="CmdLineTests\run-multimigrate-eg2.bat" />
+    <None Include="CmdLineTests\migrators-config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CmdLineTests\run-multimigrate-eg1.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CmdLineTests\run-multimigrate-eg2.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CmdLineTests\run_db_migrations.bat" />
     <None Include="packages.config" />
-    <None Include="CmdLineTests\skipped-migrations.json" />
+    <None Include="CmdLineTests\skipped-migrations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityFramework.MultiMigrate\EntityFramework.MultiMigrate.csproj">
