@@ -1,11 +1,11 @@
 [
 	{
-		Assembly: "CcAcca.DemoSharedDataMigrations",
-		ConfigurationType: "CcAcca.DemoSharedDataMigrations.Migrations.Configuration"
+		Assembly: "CcAcca.DemoUpstreamMigrations",
+		ConfigurationType: "CcAcca.DemoUpstreamMigrations.Migrations.Configuration"
 	},
 	{
-		Assembly: "CcAcca.DemoDataMigrations",
-		ConfigurationType: "CcAcca.DemoDataMigrations.Migrations.Configuration",
+		Assembly: "CcAcca.DemoDownstreamMigrations",
+		ConfigurationType: "CcAcca.DemoDownstreamMigrations.Migrations.Configuration",
 		AutomaticMigrationsEnabled: true
 	}
 ]

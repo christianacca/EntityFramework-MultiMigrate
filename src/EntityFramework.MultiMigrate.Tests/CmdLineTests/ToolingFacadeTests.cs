@@ -6,7 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations.Design;
 using System.IO;
 using System.Linq;
-using CcAcca.DemoData;
+using CcAcca.DemoDownstream;
 using NUnit.Framework;
 
 namespace CcAcca.EntityFramework.MultiMigrate.Tests.CmdLineTests
@@ -103,9 +103,9 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests.CmdLineTests
         {
             string workingDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var facade = new ToolingFacade(
-                migrationsAssemblyName: "CcAcca.DemoSharedDataMigrations",
+                migrationsAssemblyName: "CcAcca.DemoUpstreamMigrations",
                 contextAssemblyName: null,
-                configurationTypeName: "CcAcca.DemoSharedDataMigrations.Migrations.Configuration",
+                configurationTypeName: "CcAcca.DemoUpstreamMigrations.Migrations.Configuration",
                 workingDirectory: workingDirectory,
                 configurationFilePath:
                     Path.Combine(workingDirectory, "CcAcca.EntityFramework.MultiMigrate.Tests.dll.config"),
@@ -119,9 +119,9 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests.CmdLineTests
         {
             string workingDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var facade = new ToolingFacade(
-                migrationsAssemblyName: "CcAcca.DemoDataMigrations",
+                migrationsAssemblyName: "CcAcca.DemoDownstreamMigrations",
                 contextAssemblyName: null,
-                configurationTypeName: "CcAcca.DemoDataMigrations.Migrations.Configuration",
+                configurationTypeName: "CcAcca.DemoDownstreamMigrations.Migrations.Configuration",
                 workingDirectory: workingDirectory,
                 configurationFilePath:
                     Path.Combine(workingDirectory, "CcAcca.EntityFramework.MultiMigrate.Tests.dll.config"),

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
-using CcAcca.DemoSharedDataMigrations.Migrations;
+using CcAcca.DemoUpstreamMigrations.Migrations;
 
 namespace CcAcca.EntityFramework.MultiMigrate.Tests
 {
@@ -10,7 +10,7 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests
             : base(configurations ?? new DbMigrationsConfiguration[]
             {
                 new Configuration(),
-                new DemoDataMigrations.Migrations.Configuration()
+                new DemoDownstreamMigrations.Migrations.Configuration()
             }, connectionStringName ?? "DemoDbContext")
         {
             SkippedMigrations = new[] { "201501032326177_Rename LookupItem pk" };

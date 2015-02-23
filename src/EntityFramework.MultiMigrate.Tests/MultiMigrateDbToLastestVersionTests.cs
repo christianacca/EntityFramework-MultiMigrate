@@ -4,10 +4,9 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Migrations.Infrastructure;
 using System.Linq;
-using CcAcca.DemoData;
-using CcAcca.DemoModel;
-using CcAcca.DemoSharedDataMigrations.Migrations;
-using CcAcca.DemoSharedModel;
+using CcAcca.DemoDownstream;
+using CcAcca.DemoUpstream;
+using CcAcca.DemoUpstreamMigrations.Migrations;
 using NUnit.Framework;
 
 namespace CcAcca.EntityFramework.MultiMigrate.Tests
@@ -57,7 +56,7 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests
             var baseMigrations = baseModelMigrator.GetDatabaseMigrations().ToList();
             Assert.That(baseMigrations.Count, Is.EqualTo(5));
 
-            var migrator = new DbMigrator(new DemoDataMigrations.Migrations.Configuration());
+            var migrator = new DbMigrator(new DemoDownstreamMigrations.Migrations.Configuration());
             var migrations = migrator.GetDatabaseMigrations().ToList();
             Assert.That(migrations.Count, Is.EqualTo(7));
 
@@ -78,7 +77,7 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests
         [Test]
         public void CanScriptMigration()
         {
-            var migrator = new MigratorScriptingDecorator(new DbMigrator(new DemoDataMigrations.Migrations.Configuration()));
+            var migrator = new MigratorScriptingDecorator(new DbMigrator(new DemoDownstreamMigrations.Migrations.Configuration()));
             string sql = migrator.ScriptUpdate("201501032325042_Merge BaseModel3", "201501110901388_Add CustomUserRole");
             Console.Out.WriteLine(sql);
         }
