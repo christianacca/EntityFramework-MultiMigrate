@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>'Library' extends 'BaseLibrary'</p>
+<p>'Library' uses code-first migration to evolve the database over time</p>
+<p class="alert-info alert">Migrations from the upstream library are being <strong>duplicated</strong>. This is the simplest database migrations approach and <em>might</em> be sufficient for your needs</p>
+<div class="alert-danger alert">
+    <p>If you use this approach be careful to reproduce the migrations from the upstream library. This includes:</p>
+    <ul>
+        <li>Seed data included in scafolded migration code and the <code>DbMigrationsConfiguration</code> seed method</li>
+        <li>Custom migrations</li>
+    </ul>
+</div>
+
+<p>See <a href="https://msdn.microsoft.com/en-gb/data/jj591621.aspx">Code-first migrations</a> for more information</p>

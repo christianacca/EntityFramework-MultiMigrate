@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>BaseLibrary uses code-first migration to evolve the database over time</p>
+<p>BaseLibrary represents a base component library that will be extended by another library</p>
+<p>Migration were added to this project as follows:</p>
+<ol>
+    <li><code>Enable-Migrations -StartUpProjectName BaseLibrary.Web -ContextProjectName BaseLibrary</code></li>
+    <li><code>Add-Migration InitialCreate -StartUpProjectName BaseLibrary.Web</code></li>
+</ol>
+
+<p>See <a href="https://msdn.microsoft.com/en-gb/data/jj591621.aspx">Code-first migrations</a> for more information</p>
