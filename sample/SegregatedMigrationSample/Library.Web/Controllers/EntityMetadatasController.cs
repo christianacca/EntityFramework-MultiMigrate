@@ -19,7 +19,7 @@ namespace Library.Web.Controllers
         // GET: EntityMetadatas
         public async Task<ActionResult> Index()
         {
-            return View(await db.EntityMetadatas.ToListAsync());
+            return View(await db.CustomEntityMetadatas.ToListAsync());
         }
 
         // GET: EntityMetadatas/Details/5
@@ -29,7 +29,7 @@ namespace Library.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EntityMetadata entityMetadata = await db.EntityMetadatas.FindAsync(id);
+            CustomEntityMetadata entityMetadata = await db.CustomEntityMetadatas.FindAsync(id);
             if (entityMetadata == null)
             {
                 return HttpNotFound();
@@ -48,11 +48,11 @@ namespace Library.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,EntityName")] EntityMetadata entityMetadata)
+        public async Task<ActionResult> Create([Bind(Include = "Id,EntityName,Description")] CustomEntityMetadata entityMetadata)
         {
             if (ModelState.IsValid)
             {
-                db.EntityMetadatas.Add(entityMetadata);
+                db.CustomEntityMetadatas.Add(entityMetadata);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace Library.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EntityMetadata entityMetadata = await db.EntityMetadatas.FindAsync(id);
+            var entityMetadata = await db.CustomEntityMetadatas.FindAsync(id);
             if (entityMetadata == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace Library.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,EntityName")] EntityMetadata entityMetadata)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,EntityName,Description")] EntityMetadata entityMetadata)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace Library.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EntityMetadata entityMetadata = await db.EntityMetadatas.FindAsync(id);
+            var entityMetadata = await db.CustomEntityMetadatas.FindAsync(id);
             if (entityMetadata == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace Library.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            EntityMetadata entityMetadata = await db.EntityMetadatas.FindAsync(id);
-            db.EntityMetadatas.Remove(entityMetadata);
+            var entityMetadata = await db.CustomEntityMetadatas.FindAsync(id);
+            db.CustomEntityMetadatas.Remove(entityMetadata);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

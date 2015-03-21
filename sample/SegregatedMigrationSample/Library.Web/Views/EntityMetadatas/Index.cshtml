@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CcAcca.BaseLibrary.EntityMetadata>
+﻿@model IEnumerable<CcAcca.Library.CustomEntityMetadata>
 
 @{
     ViewBag.Title = "Entity Metadata";
@@ -14,6 +14,9 @@
         <th>
             @Html.DisplayNameFor(model => model.EntityName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
         <th></th>
     </tr>
 
@@ -21,6 +24,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EntityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
