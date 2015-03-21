@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Demo BaseLibrary</h1>
+    <p class="lead">Demo website to explore the BaseLibrary model</p>
+    <p>For more information see: @Html.ActionLink("About page", "About")</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Lookups</h2>
+        <p>
+            Manage list of Lookups
+        </p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Lookups")">Manage &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-6">
+        <h2>Metadata</h2>
+        <p>Manage Entity metadata</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "EntityMetadatas")">Manage &raquo;</a></p>
+    </div>
+</div>
