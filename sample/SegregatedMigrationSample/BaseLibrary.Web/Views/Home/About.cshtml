@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>BaseLibrary uses code-first migration to evolve the database over time</p>
+<p>BaseLibrary represents a base component library that will be extended by another library</p>
+<h4>How Migration were added</h4>
+<ol>
+    <li>
+        Enable migrations:<br />
+        <code>Enable-Migrations -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web -ContextProjectName BaseLibrary</code>
+    </li>
+    <li>
+        Scalfold a migration for the initial database creation:<br />
+        <code>Add-Migration InitialCreate -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web</code>
+    </li>
+    <li>
+        Add sql script that will insert initial static data:<br />
+        <ol>
+            <li>Add the script '201503011903273_InitialCreate_Up.sql' into the Migrations folder</li>
+            <li>Set the script file's 'Build Action' as 'Embedded Resource'</li>
+            <li>
+                Modify the scafolded migration '201503011903273_InitialCreate.cs' adding the following line of code<br/>
+                <code>SqlResource("CcAcca.BaseLibraryMigrations.Migrations.201503011903273_InitialCreate_Up.sql");</code>
+            </li>
+        </ol>
+    </li>
+</ol>
+
+<h4>Options for creating the database used by BaseLibrary.Web</h4>
+
+<p>To create the database the migration for BaseLibary need to be run. To do this either:</p>
+
+<ul>
+    <li>
+        Use a <code>IDatabaseInitializer</code> to automatically create the database when the application is run. <br />
+        This is configured in Web.config section <code>entityFramework/contexts</code> in BaseLibrary.Web
+    </li>
+</ul>
+<p><strong>OR</strong></p>
+<ul>
+    <li>
+        Use powershell command:<br/>
+        <code>Update-Database -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web</code>
+    </li>
+</ul>
+
+<p>See <a href="https://msdn.microsoft.com/en-gb/data/jj591621.aspx">Code-first migrations</a> for more information</p>

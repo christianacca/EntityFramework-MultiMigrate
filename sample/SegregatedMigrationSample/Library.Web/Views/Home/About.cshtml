@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>'Library' extends 'BaseLibrary'</p>
+<p class="alert-info alert">Migrations from the upstream library are <em>segregated</em> from the <em>downstream</em> migrations.
+    
+
+<h4>How Migration were added</h4>
+    
+<ol>
+    <li>
+        Enable migrations:<br />
+        <code>Enable-Migrations -ProjectName LibraryMigrations -StartUpProjectName Library.Web</code>
+    </li>
+    <li>
+        Scalfold a migration for the initial database creation:<br />
+        <code>Add-Migration "InitialCreate" -ProjectName LibraryMigrations -StartUpProjectName Library.Web</code>
+    </li>
+</ol>
+    
+<p>See the About page in 'BaseLibrary' for more information on how migrations are created for the base component</p>
+
+<h4>Options for creating the database used by Library.Web</h4>
+
+<p>To create the database the migration for both BaseLibary and Library need to be run. To do this either:</p>
+
+<ul>
+    <li>
+        Use a <em>custom</em> <code>IDatabaseInitializer</code> to automatically create the database when the application is run. <br />
+        This is configured in the Web.config section <code>entityFramework/contexts</code> in Library.Web
+    </li>
+</ul>
+<p><strong>OR</strong></p>
+<ul>
+    <li>
+        Use powershell command:<br />
+        <ol>
+            <li>
+                Run the BaseLibrary migrations:<br/>
+                <code>Update-Database -ProjectName BaseLibraryMigrations -StartUpProjectName Library.Web -ConnectionStringName LibraryDbContext</code>
+            </li>
+            <li>
+                Run the Library migrations:<br/>
+                <code>Update-Database -ProjectName LibraryMigrations -StartUpProjectName Library.Web</code>
+            </li>
+        </ol>
+    </li>
+</ul>
+
+<p>See <a href="https://msdn.microsoft.com/en-gb/data/jj591621.aspx">Code-first migrations</a> for more information</p>
