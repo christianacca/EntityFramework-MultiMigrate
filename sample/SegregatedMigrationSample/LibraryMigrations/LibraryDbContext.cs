@@ -11,11 +11,13 @@ namespace CcAcca.LibraryMigrations
         {
         }
 
-        public LibraryDbContext(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
+        public LibraryDbContext(DbConnection existingConnection, bool contextOwnsConnection)
+            : base(existingConnection, contextOwnsConnection)
         {
         }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<CustomEntityMetadata> CustomEntityMetadatas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,6 +26,18 @@ namespace CcAcca.LibraryMigrations
             modelBuilder.Ignore<EntityPropertyMetadata>();
             modelBuilder.Ignore<Lookup>();
             modelBuilder.Ignore<LookupItem>();
+
+            modelBuilder.Entity<CustomEntityMetadata>()
+                .Map(m =>
+                {
+                    m.Properties(t => new {t.EntityName });
+                    m.ToTable("EntityMetadatas");
+                })
+                .Map(m =>
+                {
+                    m.Properties(t => new { t.Description });
+                    m.ToTable("CustomEntityMetadatas");
+                });
         }
     }
 }
