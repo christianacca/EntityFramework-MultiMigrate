@@ -26,6 +26,12 @@ namespace CcAcca.LibraryMigrations.Migrations
             var items = new[] { inactiveItem, activeItem };
             baseLibraryDbContext.LookupItems.AddOrUpdate(x => new { x.Code, x.LookupId }, items);
 
+            baseLibraryDbContext.Addresses.AddRange(new[]
+            {
+                new Address {Line1 = "10 Somewhere", Line3 = "Chatham", Line4 = "Kent", Postcode = "xxx xxx"},
+                new Address {Line1 = "10 Somewhere else", Line3 = "Gravesend", Line4 = "Kent", Postcode = "yyy yyy"},
+            });
+
             baseLibraryDbContext.SaveChanges();
         }
     }
