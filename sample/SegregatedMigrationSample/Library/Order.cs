@@ -23,6 +23,6 @@ namespace CcAcca.Library
 
         public int OrderStatusId { get; set; }
 
-        public ICollection<OrderAddress> Addresses { get; set; }
+        public IList<OrderAddress> Addresses { get; set; }
     }
 }

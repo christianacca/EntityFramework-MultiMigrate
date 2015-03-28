@@ -7,128 +7,112 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using CcAcca.BaseLibrary;
 using CcAcca.Library;
-using WebGrease.Css.Extensions;
 
 namespace Library.Web.Controllers
 {
-    public class OrdersController : Controller
+    public class AddressesController : Controller
     {
         private LibraryDbContext db = new LibraryDbContext();
 
-        // GET: Orders
+        // GET: Addresses
         public async Task<ActionResult> Index()
         {
-            var orders = db.Orders.Include(o => o.OrderStatus).Include(o => o.Addresses);
-            return View(await orders.ToListAsync());
+            return View(await db.Addresses.ToListAsync());
         }
 
-        // GET: Orders/Details/5
+        // GET: Addresses/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = await db.Orders
-                .Include(o => o.OrderStatus)
-                .Include(o => o.Addresses.Select(a => a.Address))
-                .SingleOrDefaultAsync(o => o.Id == id);
-            if (order == null)
+            Address address = await db.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(address);
         }
 
-        // GET: Orders/Create
+        // GET: Addresses/Create
         public ActionResult Create()
         {
-            ViewBag.OrderStatusId = GetOrderStatusSelectList();
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Addresses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId")] Order order)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Line1,Line2,Line3,Line4,Postcode")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Addresses.Take(2).ToList().Select(a => new OrderAddress { Address = a})
-                    .ForEach(a => order.Addresses.Add(a));
-                db.Orders.Add(order);
+                db.Addresses.Add(address);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OrderStatusId = GetOrderStatusSelectList(order);
-            return View(order);
+            return View(address);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Addresses/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = await db.Orders.FindAsync(id);
-            if (order == null)
+            Address address = await db.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OrderStatusId = GetOrderStatusSelectList();
-            return View(order);
+            return View(address);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Addresses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId")] Order order)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Line1,Line2,Line3,Line4,Postcode")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.OrderStatusId = GetOrderStatusSelectList(order);
-            return View(order);
+            return View(address);
         }
 
-        private SelectList GetOrderStatusSelectList(Order order = null)
-        {
-            int? orderStatusId = order != null ? order.OrderStatusId : (int?) null;
-            return new SelectList(db.LookupItems.Where(x => x.Lookup.Name == "Order Status"), "Id", "Description", orderStatusId);
-        }
-
-        // GET: Orders/Delete/5
+        // GET: Addresses/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = await db.Orders.Include(o => o.OrderStatus).SingleOrDefaultAsync(o => o.Id == id);
-            if (order == null)
+            Address address = await db.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(address);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Order order = await db.Orders.FindAsync(id);
-            db.Orders.Remove(order);
+            Address address = await db.Addresses.FindAsync(id);
+            db.Addresses.Remove(address);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
