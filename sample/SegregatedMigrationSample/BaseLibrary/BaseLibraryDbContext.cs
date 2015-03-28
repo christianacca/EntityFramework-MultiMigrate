@@ -14,6 +14,7 @@ namespace CcAcca.BaseLibrary
 
         }
 
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<EntityMetadata> EntityMetadatas { get; set; }
         public DbSet<EntityPropertyMetadata> EntityPropertyMetadatas { get; set; }
         public DbSet<Lookup> Lookups { get; set; }

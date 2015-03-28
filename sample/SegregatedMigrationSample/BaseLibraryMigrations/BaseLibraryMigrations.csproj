@@ -50,6 +50,10 @@
     <Compile Include="Migrations\201503011903273_InitialCreate.Designer.cs">
       <DependentUpon>201503011903273_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503281437553_New Addresses class.cs" />
+    <Compile Include="Migrations\201503281437553_New Addresses class.Designer.cs">
+      <DependentUpon>201503281437553_New Addresses class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +70,9 @@
     <EmbeddedResource Include="Migrations\201503011903273_InitialCreate_Up.sql" />
     <EmbeddedResource Include="Migrations\201503011903273_InitialCreate.resx">
       <DependentUpon>201503011903273_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281437553_New Addresses class.resx">
+      <DependentUpon>201503281437553_New Addresses class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
     <Compile Include="BaseLibraryDbContext.cs" />
     <Compile Include="EntityMetadata.cs" />
     <Compile Include="EntityPropertyMetadata.cs" />
