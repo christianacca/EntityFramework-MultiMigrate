@@ -49,6 +49,7 @@
     <Compile Include="CustomEntityMetadata.cs" />
     <Compile Include="LibraryDbContext.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

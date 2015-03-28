@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using CcAcca.BaseLibrary;
 
@@ -6,6 +7,11 @@ namespace CcAcca.Library
 {
     public class Order
     {
+        public Order()
+        {
+            Addresses = new List<OrderAddress>();
+        }
+
         public int Id { get; set; }
 
         public DateTimeOffset OrderDate { get; set; }
@@ -16,5 +22,7 @@ namespace CcAcca.Library
         public LookupItem OrderStatus { get; set; }
 
         public int OrderStatusId { get; set; }
+
+        public ICollection<OrderAddress> Addresses { get; set; }
     }
 }

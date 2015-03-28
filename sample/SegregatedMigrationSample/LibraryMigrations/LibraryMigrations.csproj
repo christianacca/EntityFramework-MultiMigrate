@@ -55,6 +55,10 @@
     <Compile Include="Migrations\201503211021176_Extend EntityMetadata.Designer.cs">
       <DependentUpon>201503211021176_Extend EntityMetadata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503281514399_New OrderAddresses.cs" />
+    <Compile Include="Migrations\201503281514399_New OrderAddresses.Designer.cs">
+      <DependentUpon>201503281514399_New OrderAddresses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503211021176_Extend EntityMetadata.resx">
       <DependentUpon>201503211021176_Extend EntityMetadata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281514399_New OrderAddresses.resx">
+      <DependentUpon>201503281514399_New OrderAddresses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
