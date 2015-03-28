@@ -22,6 +22,7 @@ namespace CcAcca.LibraryMigrations
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Ignore<Address>();
             modelBuilder.Ignore<EntityMetadata>();
             modelBuilder.Ignore<EntityPropertyMetadata>();
             modelBuilder.Ignore<Lookup>();
