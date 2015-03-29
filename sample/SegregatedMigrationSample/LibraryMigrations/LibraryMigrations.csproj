@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201503291715419_Merge EntityMetadata.Notes.Designer.cs">
       <DependentUpon>201503291715419_Merge EntityMetadata.Notes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503291921188_New CustomLookupItem class.cs" />
+    <Compile Include="Migrations\201503291921188_New CustomLookupItem class.Designer.cs">
+      <DependentUpon>201503291921188_New CustomLookupItem class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503291715419_Merge EntityMetadata.Notes.resx">
       <DependentUpon>201503291715419_Merge EntityMetadata.Notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503291921188_New CustomLookupItem class.resx">
+      <DependentUpon>201503291921188_New CustomLookupItem class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

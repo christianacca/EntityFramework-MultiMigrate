@@ -23,6 +23,11 @@ namespace CcAcca.Library
 
         public int OrderStatusId { get; set; }
 
+        public CustomLookupItem OrderRecommendation { get; set; }
+
+        [Range(1, Int32.MaxValue)]
+        public int OrderRecommendationId { get; set; }
+
         public IList<OrderAddress> Addresses { get; set; }
     }
 }
