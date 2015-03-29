@@ -47,7 +47,7 @@ namespace BaseLibrary.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,EntityName")] EntityMetadata entityMetadata)
+        public async Task<ActionResult> Create([Bind(Include = "Id,EntityName,DeveloperNotes")] EntityMetadata entityMetadata)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace BaseLibrary.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,EntityName")] EntityMetadata entityMetadata)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,EntityName,DeveloperNotes")] EntityMetadata entityMetadata)
         {
             if (ModelState.IsValid)
             {

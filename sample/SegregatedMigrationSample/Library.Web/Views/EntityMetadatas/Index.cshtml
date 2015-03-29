@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.EntityName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DeveloperNotes)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EntityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeveloperNotes)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
