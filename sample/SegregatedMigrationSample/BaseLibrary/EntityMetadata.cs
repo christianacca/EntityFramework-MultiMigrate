@@ -12,6 +12,8 @@ namespace CcAcca.BaseLibrary
         [Required]
         public string EntityName { get; set; }
 
+        public string DeveloperNotes { get; set; }
+
         public virtual ICollection<EntityPropertyMetadata> Properties
         {
             get { return _properties; }

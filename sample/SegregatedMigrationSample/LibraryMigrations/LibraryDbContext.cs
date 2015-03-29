@@ -31,7 +31,7 @@ namespace CcAcca.LibraryMigrations
             modelBuilder.Entity<CustomEntityMetadata>()
                 .Map(m =>
                 {
-                    m.Properties(t => new {t.EntityName });
+                    m.Properties(t => new { t.EntityName, t.DeveloperNotes });
                     m.ToTable("EntityMetadatas");
                 })
                 .Map(m =>

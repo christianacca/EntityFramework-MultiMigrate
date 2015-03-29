@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201503281437553_New Addresses class.Designer.cs">
       <DependentUpon>201503281437553_New Addresses class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503291711501_New property EntityMetadata.Notes.cs" />
+    <Compile Include="Migrations\201503291711501_New property EntityMetadata.Notes.Designer.cs">
+      <DependentUpon>201503291711501_New property EntityMetadata.Notes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503281437553_New Addresses class.resx">
       <DependentUpon>201503281437553_New Addresses class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503291711501_New property EntityMetadata.Notes.resx">
+      <DependentUpon>201503291711501_New property EntityMetadata.Notes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
