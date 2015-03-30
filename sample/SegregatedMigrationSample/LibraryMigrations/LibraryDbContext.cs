@@ -23,11 +23,7 @@ namespace CcAcca.LibraryMigrations
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Ignore<Address>();
-            modelBuilder.Ignore<EntityMetadata>();
-            modelBuilder.Ignore<EntityPropertyMetadata>();
-            modelBuilder.Ignore<Lookup>();
-            modelBuilder.Ignore<LookupItem>();
+            modelBuilder.IgnoreExistingMappedTypes<BaseLibraryDbContext>();
 
             modelBuilder.Entity<CustomEntityMetadata>()
                 .Map(m =>

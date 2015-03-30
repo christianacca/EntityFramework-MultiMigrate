@@ -68,6 +68,7 @@
       <DependentUpon>201503291921188_New CustomLookupItem class.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelBuilderExts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
