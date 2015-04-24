@@ -15,24 +15,25 @@ namespace Library.Web
 
         private void InitializeLibrarySchema(DbConnection connection)
         {
-            var initializer =
-                new MigrateDatabaseToLatestVersion
-                    <CcAcca.LibraryMigrations.LibraryDbContext, CcAcca.LibraryMigrations.Migrations.Configuration>(true);
 
-            var db = new CcAcca.LibraryMigrations.LibraryDbContext(connection, false);
-            Database.SetInitializer(initializer);
-            db.Database.Initialize(true);
+            using (var db = new CcAcca.LibraryMigrations.LibraryDbContext(connection, false))
+            {
+                var initializer =
+                    new MigrateDatabaseToLatestVersion
+                        <CcAcca.LibraryMigrations.LibraryDbContext, CcAcca.LibraryMigrations.Migrations.Configuration>(true);
+                initializer.InitializeDatabase(db);
+            }
         }
 
         private static void InitializeBaseLibrarySchema(DbConnection connection)
         {
-            var initializer =
-                new MigrateDatabaseToLatestVersion
-                    <BaseLibraryDbContext, CcAcca.BaseLibraryMigrations.Migrations.Configuration>(true);
-
-            var db = new BaseLibraryDbContext(connection, false);
-            Database.SetInitializer(initializer);
-            db.Database.Initialize(true);
+            using (var db = new BaseLibraryDbContext(connection, false))
+            {
+                var initializer =
+                    new MigrateDatabaseToLatestVersion
+                        <BaseLibraryDbContext, CcAcca.BaseLibraryMigrations.Migrations.Configuration>(true);
+                initializer.InitializeDatabase(db);
+            }
         }
     }
 }
