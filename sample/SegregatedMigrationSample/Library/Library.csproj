@@ -49,6 +49,7 @@
     <Compile Include="CustomEntityMetadata.cs" />
     <Compile Include="CustomLookupItem.cs" />
     <Compile Include="LibraryDbContext.cs" />
+    <Compile Include="Mappings\SharedConventions\SharedConventionRules.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,7 @@
       <Name>BaseLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

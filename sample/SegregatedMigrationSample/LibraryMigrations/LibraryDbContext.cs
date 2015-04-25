@@ -1,13 +1,15 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Pluralization;
 using CcAcca.BaseLibrary;
 using CcAcca.Library;
+using CcAcca.Library.Mappings.SharedConventions;
 
 namespace CcAcca.LibraryMigrations
 {
     public class LibraryDbContext : BaseLibraryDbContext
     {
+        public const string OurDbSchemaName = "dbo";
+
         public LibraryDbContext()
         {
         }
@@ -22,29 +24,30 @@ namespace CcAcca.LibraryMigrations
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            // note that our component's conventions will be overridden by BaseLibrary convetions.
+            // on balance that's usually what you want so that our component follows the same
+            // conventions as the BaseLibrary component
+            SharedConventionRules.Apply(modelBuilder);
 
-            modelBuilder.IgnoreExistingMappedTypes(new BaseLibraryDbContext(Database.Connection, false));
-
-            // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping for LookupItem
-            // we're doing this so that the single table get's created in the schema we want all tables in the inheritance
-            // hierarchy
-            var baseType = typeof(LookupItem);
-            modelBuilder.Types()
-                .Where(baseType.IsAssignableFrom)
-                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(baseType.Name), "BaseLib"));
-
+            // Table-Per-Type inheritance mapping
             modelBuilder.Entity<CustomEntityMetadata>()
                 .Map(m =>
                 {
                     m.Properties(t => new { t.EntityName, t.DeveloperNotes });
-                    m.ToTable("EntityMetadata", "BaseLib");
+                    m.ToTable("EntityMetadata", DbSchemaName);
                 })
                 .Map(m =>
                 {
                     m.Properties(t => new { t.Description });
-                    m.ToTable("CustomEntityMetadatas", "dbo");
+                    m.ToTable("CustomEntityMetadatas", OurDbSchemaName);
                 });
+
+            // by calling into BaseLibrary at the end here ensures by default that conventions 
+            // of BaseLibrary take precendence
+            base.OnModelCreating(modelBuilder);
+
+            // by convention remove BaseLibrary component classes from our component's persistent model
+            modelBuilder.IgnoreExistingMappedTypes(new BaseLibraryDbContext(Database.Connection, false));
         }
     }
 }
