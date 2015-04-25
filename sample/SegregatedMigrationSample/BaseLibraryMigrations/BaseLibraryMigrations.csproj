@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201504251005268_Change EntityMetadata table mapping.Designer.cs">
       <DependentUpon>201504251005268_Change EntityMetadata table mapping.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504251239590_Subclass EntityMetadata.cs" />
+    <Compile Include="Migrations\201504251239590_Subclass EntityMetadata.Designer.cs">
+      <DependentUpon>201504251239590_Subclass EntityMetadata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,7 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503011903273_InitialCreate_Up.sql" />
+    <EmbeddedResource Include="Migrations\201504251239590_Subclass EntityMetadata_Up.sql" />
     <EmbeddedResource Include="Migrations\201503011903273_InitialCreate.resx">
       <DependentUpon>201503011903273_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +99,12 @@
     <EmbeddedResource Include="Migrations\201504251005268_Change EntityMetadata table mapping.resx">
       <DependentUpon>201504251005268_Change EntityMetadata table mapping.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504251239590_Subclass EntityMetadata.resx">
+      <DependentUpon>201504251239590_Subclass EntityMetadata.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503011903273_InitialCreate_Up.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

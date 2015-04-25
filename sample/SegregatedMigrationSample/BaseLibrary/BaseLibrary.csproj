@@ -52,6 +52,7 @@
     <Compile Include="EntityPropertyMetadata.cs" />
     <Compile Include="Lookup.cs" />
     <Compile Include="LookupItem.cs" />
+    <Compile Include="AlternativeEntityMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
