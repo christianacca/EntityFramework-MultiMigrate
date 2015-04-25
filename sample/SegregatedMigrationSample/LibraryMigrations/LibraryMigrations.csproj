@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201504250903550_Merge Rename db schema.Designer.cs">
       <DependentUpon>201504250903550_Merge Rename db schema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504251009204_Merge Change EntityMetadata table mapping.cs" />
+    <Compile Include="Migrations\201504251009204_Merge Change EntityMetadata table mapping.Designer.cs">
+      <DependentUpon>201504251009204_Merge Change EntityMetadata table mapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuilderExts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504250903550_Merge Rename db schema.resx">
       <DependentUpon>201504250903550_Merge Rename db schema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504251009204_Merge Change EntityMetadata table mapping.resx">
+      <DependentUpon>201504251009204_Merge Change EntityMetadata table mapping.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

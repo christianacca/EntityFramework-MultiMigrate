@@ -26,6 +26,8 @@ namespace CcAcca.BaseLibrary
         {
             modelBuilder.Properties<string>().Configure(property => property.HasMaxLength(500));
 
+            modelBuilder.Entity<EntityMetadata>().ToTable("EntityMetadata", "BaseLib");
+
             // note: we're not using HasDefaultSchema to make it easier on downstream developers who might
             // want to set this themselves
             // instead we're using the modelBuilder.Types().Configure() method to define the db schema for

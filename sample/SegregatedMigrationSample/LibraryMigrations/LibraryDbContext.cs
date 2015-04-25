@@ -24,7 +24,7 @@ namespace CcAcca.LibraryMigrations
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.IgnoreExistingMappedTypes<BaseLibraryDbContext>();
+            modelBuilder.IgnoreExistingMappedTypes(new BaseLibraryDbContext(Database.Connection, false));
 
             // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping for LookupItem
             // we're doing this so that the single table get's created in the schema we want all tables in the inheritance
@@ -38,7 +38,7 @@ namespace CcAcca.LibraryMigrations
                 .Map(m =>
                 {
                     m.Properties(t => new { t.EntityName, t.DeveloperNotes });
-                    m.ToTable("EntityMetadatas", "BaseLib");
+                    m.ToTable("EntityMetadata", "BaseLib");
                 })
                 .Map(m =>
                 {
