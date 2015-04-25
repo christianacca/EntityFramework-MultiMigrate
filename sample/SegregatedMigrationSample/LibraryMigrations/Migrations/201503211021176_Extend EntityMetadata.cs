@@ -15,14 +15,14 @@ namespace CcAcca.LibraryMigrations.Migrations
                         Description = c.String(maxLength: 255),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.EntityMetadatas", t => t.Id)
                 .Index(t => t.Id);
-            
+            AddForeignKey("dbo.CustomEntityMetadatas", "Id", "BaseLib.EntityMetadatas", "Id");
+
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.CustomEntityMetadatas", "Id", "dbo.EntityMetadatas");
+            DropForeignKey("dbo.CustomEntityMetadatas", "Id", "BaseLib.EntityMetadatas");
             DropIndex("dbo.CustomEntityMetadatas", new[] { "Id" });
             DropTable("dbo.CustomEntityMetadatas");
         }

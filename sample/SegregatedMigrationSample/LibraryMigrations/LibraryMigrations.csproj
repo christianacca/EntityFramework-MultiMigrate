@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201503291921188_New CustomLookupItem class.Designer.cs">
       <DependentUpon>201503291921188_New CustomLookupItem class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504250903550_Merge Rename db schema.cs" />
+    <Compile Include="Migrations\201504250903550_Merge Rename db schema.Designer.cs">
+      <DependentUpon>201504250903550_Merge Rename db schema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelBuilderExts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503291921188_New CustomLookupItem class.resx">
       <DependentUpon>201503291921188_New CustomLookupItem class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504250903550_Merge Rename db schema.resx">
+      <DependentUpon>201504250903550_Merge Rename db schema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

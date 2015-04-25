@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Pluralization;
 using CcAcca.BaseLibrary;
 using CcAcca.Library;
 
@@ -25,16 +26,24 @@ namespace CcAcca.LibraryMigrations
 
             modelBuilder.IgnoreExistingMappedTypes<BaseLibraryDbContext>();
 
+            // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping for LookupItem
+            // we're doing this so that the single table get's created in the schema we want all tables in the inheritance
+            // hierarchy
+            var baseType = typeof(LookupItem);
+            modelBuilder.Types()
+                .Where(baseType.IsAssignableFrom)
+                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(baseType.Name), "BaseLib"));
+
             modelBuilder.Entity<CustomEntityMetadata>()
                 .Map(m =>
                 {
                     m.Properties(t => new { t.EntityName, t.DeveloperNotes });
-                    m.ToTable("EntityMetadatas");
+                    m.ToTable("EntityMetadatas", "BaseLib");
                 })
                 .Map(m =>
                 {
                     m.Properties(t => new { t.Description });
-                    m.ToTable("CustomEntityMetadatas");
+                    m.ToTable("CustomEntityMetadatas", "dbo");
                 });
         }
     }

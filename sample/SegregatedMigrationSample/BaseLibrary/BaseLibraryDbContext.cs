@@ -1,5 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Pluralization;
+using System.Reflection;
 
 namespace CcAcca.BaseLibrary
 {
@@ -23,7 +25,15 @@ namespace CcAcca.BaseLibrary
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Properties<string>().Configure(property => property.HasMaxLength(500));
-            base.OnModelCreating(modelBuilder);
+
+            // note: we're not using HasDefaultSchema to make it easier on downstream developers who might
+            // want to set this themselves
+            // instead we're using the modelBuilder.Types().Configure() method to define the db schema for
+            // the classes in this assembly
+//            modelBuilder.HasDefaultSchema("BaseLib");
+            Assembly thisAssembly = typeof(LookupItem).Assembly;
+            modelBuilder.Types().Where(t => t.Assembly == thisAssembly)
+                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(c.ClrType.Name), "BaseLib"));
         }
     }
 }

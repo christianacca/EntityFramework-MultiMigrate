@@ -12,8 +12,8 @@ namespace CcAcca.LibraryMigrations.Migrations
             // to support table-per-hierachy inheritance mapping
 
             // we're setting a defaultValue in case BaseLibraryDbContext is used to insert LookupItem instances
-            AddColumn("dbo.LookupItems", "Discriminator", c => c.String(maxLength: 128, nullable: false, defaultValue: "LookupItem"));
-            AddColumn("dbo.LookupItems", "Sequence", c => c.Int(nullable: true));
+            AddColumn("BaseLib.LookupItems", "Discriminator", c => c.String(maxLength: 128, nullable: false, defaultValue: "LookupItem"));
+            AddColumn("BaseLib.LookupItems", "Sequence", c => c.Int(nullable: true));
             AddColumn("dbo.Orders", "OrderRecommendationId", c => c.Int(nullable: true));
             CreateIndex("dbo.Orders", "OrderRecommendationId");
         }
@@ -23,9 +23,8 @@ namespace CcAcca.LibraryMigrations.Migrations
             // note: this is hand written migrations - see above
             DropIndex("dbo.Orders", new[] { "OrderRecommendationId" });
             DropColumn("dbo.Orders", "OrderRecommendationId");
-            DropColumn("dbo.LookupItems", "Sequence");
-            DropColumn("dbo.LookupItems", "Discriminator");
-
+            DropColumn("BaseLib.LookupItems", "Sequence");
+            DropColumn("BaseLib.LookupItems", "Discriminator");
         }
     }
 }
