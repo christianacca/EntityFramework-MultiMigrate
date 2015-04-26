@@ -61,6 +61,10 @@
       <Project>{EA3F39D1-29F6-41A3-9E56-02211CA1BC9C}</Project>
       <Name>DemoUpstream</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MigrationUtils\MigrationUtils.csproj">
+      <Project>{91C77230-2EE1-43EF-8D0C-452C8A43656F}</Project>
+      <Name>MigrationUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

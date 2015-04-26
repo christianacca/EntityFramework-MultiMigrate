@@ -1,7 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Pluralization;
 using CcAcca.DemoUpstream;
+using CcAcca.EntityFramework.MigrationUtils.Conventions;
 
 namespace CcAcca.DemoDownstream
 {
@@ -24,24 +24,14 @@ namespace CcAcca.DemoDownstream
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
             // set default schema...
-
             // we can't set a default schema that all tables should have because of a limitation of using automatic migrations
             modelBuilder.HasDefaultSchema(null);
-            var mainModelAssembly = typeof(Asset).Assembly;
-            modelBuilder.Types()
-                .Where(t => t.Assembly == mainModelAssembly)
-                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(c.ClrType.Name), "Main"));
+            modelBuilder.Conventions.Add(SetSchemaConvention.AllTypesInAssemblyContaining<Asset>("Main"));
 
-            // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping for UserRole
-            // we're doing this so that the single table get's created in the schema we want all tables
-            var userRoleType = typeof(UserRole);
-            modelBuilder.Types()
-                .Where(t => t.Assembly == mainModelAssembly)
-                .Where(userRoleType.IsAssignableFrom)
-                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(userRoleType.Name), BaseSchemaName));
+            // by calling into DemoBaseDbContext at the end here ensures by default that conventions 
+            // of DemoUpstream take precendence
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
