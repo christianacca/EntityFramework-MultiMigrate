@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conventions\ModelBuilderExts.cs" />
-    <Compile Include="Conventions\SetSchemaConvention.cs" />
+    <Compile Include="Conventions\DefaultSchemaConvention.cs" />
     <Compile Include="Conventions\TableNameConvention.cs" />
     <Compile Include="Conventions\TablePerHiearchyConvention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

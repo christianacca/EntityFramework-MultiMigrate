@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using CcAcca.BaseLibrary;
-using CcAcca.BaseLibrary.ReusableConventions;
+using CcAcca.EntityFramework.MigrationUtils.Conventions;
 
 namespace CcAcca.Library.Mappings.SharedConventions
 {

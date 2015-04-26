@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\EntityFramework.MigrationUtils\EntityFramework.MigrationUtils.csproj">
+      <Project>{91C77230-2EE1-43EF-8D0C-452C8A43656F}</Project>
+      <Name>EntityFramework.MigrationUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BaseLibrary\BaseLibrary.csproj">
       <Project>{25FD6E6A-294B-49E6-B4F8-21A13958B4D0}</Project>
       <Name>BaseLibrary</Name>

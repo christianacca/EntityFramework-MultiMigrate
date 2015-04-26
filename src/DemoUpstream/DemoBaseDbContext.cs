@@ -32,7 +32,7 @@ namespace CcAcca.DemoUpstream
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // set default schema
-            modelBuilder.Conventions.Add(SetSchemaConvention.AllTypesInAssemblyContaining<LookupItem>(BaseSchemaName));
+            modelBuilder.Conventions.Add(DefaultSchemaConvention.AllTypesInAssemblyContaining<LookupItem>(BaseSchemaName));
             modelBuilder.HasDefaultSchema(BaseSchemaName);
 
             // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping

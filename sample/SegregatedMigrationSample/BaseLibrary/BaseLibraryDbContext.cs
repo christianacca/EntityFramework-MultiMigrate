@@ -1,8 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Pluralization;
-using System.Reflection;
-using CcAcca.BaseLibrary.ReusableConventions;
+using CcAcca.EntityFramework.MigrationUtils.Conventions;
 
 namespace CcAcca.BaseLibrary
 {
@@ -32,12 +30,9 @@ namespace CcAcca.BaseLibrary
 
             // note: we're not using HasDefaultSchema to make it easier on downstream developers who might
             // want to set this themselves
-            // instead we're using the modelBuilder.Types().Configure() method to define the db schema for
-            // the classes in this assembly
+            // instead we're using the DefaultSchemaConvention convention
 //            modelBuilder.HasDefaultSchema("BaseLib");
-            Assembly thisAssembly = typeof (LookupItem).Assembly;
-            modelBuilder.Types().Where(t => t.Assembly == thisAssembly)
-                .Configure(c => c.ToTable(new EnglishPluralizationService().Pluralize(c.ClrType.Name), DbSchemaName));
+            modelBuilder.Conventions.Add(DefaultSchemaConvention.AllTypesInAssemblyContaining<LookupItem>(DbSchemaName));
 
 
             // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping

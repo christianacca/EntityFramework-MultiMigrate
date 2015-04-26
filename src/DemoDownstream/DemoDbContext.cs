@@ -27,7 +27,7 @@ namespace CcAcca.DemoDownstream
             // set default schema...
             // we can't set a default schema that all tables should have because of a limitation of using automatic migrations
             modelBuilder.HasDefaultSchema(null);
-            modelBuilder.Conventions.Add(SetSchemaConvention.AllTypesInAssemblyContaining<Asset>("Main"));
+            modelBuilder.Conventions.Add(DefaultSchemaConvention.AllTypesInAssemblyContaining<Asset>("Main"));
 
             // by calling into DemoBaseDbContext at the end here ensures by default that conventions 
             // of DemoUpstream take precendence
