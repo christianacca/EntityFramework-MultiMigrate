@@ -61,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DemoBaseDbContext.cs" />
     <Compile Include="ReferenceDataAttribute.cs" />
-    <Compile Include="UdfAttribute.cs" />
     <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>

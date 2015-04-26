@@ -1,4 +1,5 @@
 using System.Data.Entity.Migrations;
+using CcAcca.DemoDownstream;
 
 namespace CcAcca.DemoDownstreamMigrations.Migrations
 {
