@@ -61,9 +61,9 @@
       <Project>{EA3F39D1-29F6-41A3-9E56-02211CA1BC9C}</Project>
       <Name>DemoUpstream</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MigrationUtils\MigrationUtils.csproj">
+    <ProjectReference Include="..\EntityFramework.MigrationUtils\EntityFramework.MigrationUtils.csproj">
       <Project>{91C77230-2EE1-43EF-8D0C-452C8A43656F}</Project>
-      <Name>MigrationUtils</Name>
+      <Name>EntityFramework.MigrationUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

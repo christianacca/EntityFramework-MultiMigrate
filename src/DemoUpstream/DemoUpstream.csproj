@@ -72,9 +72,9 @@
       <Project>{fd8fc6ed-5379-496b-96f9-597a6a73271c}</Project>
       <Name>EntityFramework.MultiMigrate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MigrationUtils\MigrationUtils.csproj">
+    <ProjectReference Include="..\EntityFramework.MigrationUtils\EntityFramework.MigrationUtils.csproj">
       <Project>{91C77230-2EE1-43EF-8D0C-452C8A43656F}</Project>
-      <Name>MigrationUtils</Name>
+      <Name>EntityFramework.MigrationUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

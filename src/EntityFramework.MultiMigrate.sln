@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiMigrate", "MultiMigrat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1CC1E4EC-758B-4BFD-ACD4-9435D0D433EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationUtils", "MigrationUtils\MigrationUtils.csproj", "{91C77230-2EE1-43EF-8D0C-452C8A43656F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.MigrationUtils", "EntityFramework.MigrationUtils\EntityFramework.MigrationUtils.csproj", "{91C77230-2EE1-43EF-8D0C-452C8A43656F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
