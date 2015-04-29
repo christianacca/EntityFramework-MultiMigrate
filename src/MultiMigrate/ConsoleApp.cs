@@ -135,9 +135,15 @@ namespace MultiMigrate
 
         private static string GetWorkingDirectory()
         {
-            return Path.IsPathRooted(_startUpDirectory)
-                ? _startUpDirectory
-                : Path.Combine(Environment.CurrentDirectory, _startUpDirectory);
+            if (Path.IsPathRooted(_startUpDirectory))
+            {
+                return _startUpDirectory;
+            }
+            if (_startUpDirectory == ".")
+            {
+                return Environment.CurrentDirectory;
+            }
+            return Path.Combine(Environment.CurrentDirectory, _startUpDirectory);
         }
     }
 }
