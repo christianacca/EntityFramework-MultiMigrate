@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>'Library' extends 'BaseLibrary'</p>
+<p class="alert-info alert">
+    Migrations from both the BaseLibrary and this library are <em>merged</em> into a single list that
+    is then run in chronological order to create the database
+</p>
+
+<h4>How Migration were added</h4>
+
+<ol>
+    <li>
+        Enable migrations:<br />
+        <code>Enable-Migrations -ProjectName LibraryMigrations -StartUpProjectName Library.Web</code>
+    </li>
+    <li>
+        Scalfold a migration for the initial database creation:<br />
+        <code>Add-Migration "InitialCreate" -ProjectName LibraryMigrations -StartUpProjectName Library.Web</code>
+    </li>
+    <li>
+        Modifiy the scalfolded initial migration:
+        <ul>
+            <li>
+                Remove from the <code>Up()</code> migration method the <code>CreateTable</code> operations for
+                classes in the base library
+            </li>
+            <li>
+                <p>
+                    Remove from the <code>Down()</code> migration method the <code>DropForeignKey</code> operations
+                    <em>for fk's between tables defined in the base library</em>.
+                </p>
+                <p>
+                    So for example you will need to remove:<br />
+                    <code>DropForeignKey("BaseLib.LookupItems", "LookupId", "BaseLib.Lookups");</code><br /><br />
+                    But not:<br />
+                    <code>DropForeignKey("Lib.Orders", "OrderStatusId", "BaseLib.LookupItems");</code>
+                </p>
+            </li>
+            <li>
+                Remove from the <code>Down()</code> migration method the <code>DropIndex</code> and <code>DropTable</code>
+                operations <em>for tables defined in the base library</em>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<p>See the About page in 'BaseLibrary' for more information on how migrations are created for the base component</p>
+
+<h4>Options for creating the database used by Library.Web</h4>
+<p>To create the database the migration for both BaseLibary and Library need to be run. To do this either:</p>
+
+<ul>
+    <li>
+        Use a custom <code>IDatabaseInitializer</code> that will automatically create the db when the Library.Web site is run
+        <ol>
+            <li>Create a subclass that inherits from <code>MultiMigrateDbToLastestVersion</code></li>
+            <li>Configure the initializer in the Web.config section <code>entityFramework/contexts</code> in Library.Web</li>
+        </ol>
+    </li>
+</ul>
+<p><strong>OR</strong></p>
+<ul>
+    <li>
+        Use MultiMigrate.exe tool:<br />
+        Run the batch file <code>run-multimigrate.bat</code> included in the solution
+    </li>
+</ul>
+
+<p>See <a href="https://msdn.microsoft.com/en-gb/data/jj591621.aspx">Code-first migrations</a> for more information</p>

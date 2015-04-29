@@ -1,0 +1,11 @@
+[
+	{
+		Assembly: "CcAcca.BaseLibraryMigrations",
+		ConfigurationType: "CcAcca.BaseLibraryMigrations.Migrations.Configuration"
+	},
+	{
+		Assembly: "CcAcca.LibraryMigrations",
+		ConfigurationType: "CcAcca.LibraryMigrations.Migrations.Configuration",
+		AutomaticMigrationsEnabled: false
+	}
+]
