@@ -1,6 +1,8 @@
 # EntityFramework-MultiMigrate
 EntityFramework migration tool and library that supports migrating multiple models
 
+For details of how to use it see: http://codingmonster.co.uk/blog/1395/entity-framework-multi-migration
+
 ## Purpose
 
 Out of the box, Entityframework supports multiple models being persisted to the same database. However...
