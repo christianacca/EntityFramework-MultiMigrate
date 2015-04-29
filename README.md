@@ -25,7 +25,7 @@ that is shared by multiple libraries.
 
 This kernel is developed as a base class library that is inherited and extended by one or more concreate class libraries.
 
-In such scenarios, typically migrations for the base class library end up having to be repeatedily scalfolded by each 
+In such scenarios, typically migrations for the base class library end up having to be repeatedily scaffolded by each 
 extending library. For simple libraries this might be ok. 
 
 This is not viable as complexity of the base library increases and custom migrations are required and/or migrations include 
