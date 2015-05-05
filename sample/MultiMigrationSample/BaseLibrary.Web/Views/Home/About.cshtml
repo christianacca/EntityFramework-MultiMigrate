@@ -13,18 +13,32 @@
         <code>Enable-Migrations -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web -ContextProjectName BaseLibrary</code>
     </li>
     <li>
-        Scalfold a migration for the initial database creation:<br />
+        Scaffold a migration for the initial database creation:<br />
         <code>Add-Migration InitialCreate -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web</code>
     </li>
 </ol>
 
 <h4>Options for creating the database used by BaseLibrary.Web</h4>
 
+<p>BaseLibrary.Web does <strong>not</strong> use the database created just for the classes in the BaseLibrary model</p>
+<p>Instead it uses a database that includes classes from both the BaseLibrary model and the BaseLibrary.DemoModel</p>
+<div class="bs-callout bs-callout-info">
+    <h4>Why BaseLibrary.DemoModel?</h4>
+    <p>
+        This arrangement is typical when developing a base library. A developer uses the BaseLibrary.DemoModel as
+        a test bed for developing the features in the base library.
+    </p>
+    <p>
+        This BaseLibrary.DemoModel extends BaseLibrary model. The <em>Segregated migration</em> strategy using
+        auto-migrations is then used to keep this developer database up to date.
+    </p>
+</div>
+
 <p>To create the database the migration for BaseLibary need to be run. To do this either:</p>
 
 <ul>
     <li>
-        Use a <code>IDatabaseInitializer</code> to automatically create the database when the application is run. <br />
+        Use <code>MultiMigrateDbToLatestVs</code> to automatically create the database when the application is run. <br />
         This is configured in Web.config section <code>entityFramework/contexts</code> in BaseLibrary.Web
     </li>
 </ul>
@@ -32,14 +46,23 @@
 <ul>
     <li>
         Use powershell command:<br />
-        <code>Update-Database -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web</code>
+        <ol>
+            <li>
+                Run the BaseLibrary migrations:<br />
+                <code>Update-Database -ProjectName BaseLibraryMigrations -StartUpProjectName BaseLibrary.Web</code>
+            </li>
+            <li>
+                Run the BaseLibrary.DemoModel migrations:<br />
+                <code>Update-Database -ProjectName BaseLibrary.DemoMigrations -StartUpProjectName BaseLibrary.Web -ConnectionStringName DemoDbContext</code>
+            </li>
+        </ol>
     </li>
 </ul>
 <p><strong>OR</strong></p>
 <ul>
     <li>
         Use migrate.exe tool:<br />
-        Run the batch file <code>run_baselibrary_migrations.bat</code> included in the solution
+        Run the batch file <code>run_baselibrary_demo_migrations.bat</code> included in the solution
     </li>
 </ul>
 

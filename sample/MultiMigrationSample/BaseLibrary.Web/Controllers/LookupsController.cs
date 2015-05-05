@@ -8,12 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CcAcca.BaseLibrary;
+using CcAcca.BaseLibrary.DemoModel;
 
 namespace BaseLibrary.Web.Controllers
 {
     public class LookupsController : Controller
     {
-        private BaseLibraryDbContext db = new BaseLibraryDbContext();
+        private DemoDbContext db = new DemoDbContext();
 
         // GET: Lookups
         public async Task<ActionResult> Index()

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using CcAcca.EntityFramework.MigrationUtils.Conventions;
 
 namespace CcAcca.BaseLibrary
@@ -6,6 +7,14 @@ namespace CcAcca.BaseLibrary
     public class BaseLibraryDbContext : DbContext
     {
         private const string BaseSchemaName = "BaseLib";
+
+        public BaseLibraryDbContext()
+        {
+        }
+
+        public BaseLibraryDbContext(DbConnection existingConnection, bool contextOwnsConnection) : base(existingConnection, contextOwnsConnection)
+        {
+        }
 
         public DbSet<EntityMetadata> EntityMetadatas { get; set; }
         public DbSet<EntityPropertyMetadata> EntityPropertyMetadatas { get; set; }

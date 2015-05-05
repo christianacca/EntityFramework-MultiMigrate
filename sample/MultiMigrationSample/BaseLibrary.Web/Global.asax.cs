@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using CcAcca.BaseLibrary;
+using CcAcca.BaseLibrary.DemoModel;
 
 namespace BaseLibrary.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -21,7 +17,7 @@ namespace BaseLibrary.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            using (var db = new BaseLibraryDbContext())
+            using (var db = new DemoDbContext())
             {
                 db.Database.Initialize(false);
             }

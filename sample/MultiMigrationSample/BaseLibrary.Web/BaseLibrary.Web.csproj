@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MultiMigrateDbToLatestVs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +195,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BaseLibrary.DemoMigrations\BaseLibrary.DemoMigrations.csproj">
+      <Project>{705021b8-9c70-4def-a5c5-b5bdaeeab204}</Project>
+      <Name>BaseLibrary.DemoMigrations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaseLibrary.DemoModel\BaseLibrary.DemoModel.csproj">
+      <Project>{1D54FA5C-195D-46E6-B26B-63FAA00544AB}</Project>
+      <Name>BaseLibrary.DemoModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BaseLibraryMigrations\BaseLibraryMigrations.csproj">
       <Project>{5571a8c5-a756-402d-b5d2-a5c0d6979877}</Project>
       <Name>BaseLibraryMigrations</Name>
