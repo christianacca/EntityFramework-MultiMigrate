@@ -54,6 +54,10 @@
     <Compile Include="Migrations\201505061717249_Merge BaseLibrary 1.Designer.cs">
       <DependentUpon>201505061717249_Merge BaseLibrary 1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505061907582_New CustomLookupItem class.cs" />
+    <Compile Include="Migrations\201505061907582_New CustomLookupItem class.Designer.cs">
+      <DependentUpon>201505061907582_New CustomLookupItem class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyMultiMigrateDbToLastestVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505061717249_Merge BaseLibrary 1.resx">
       <DependentUpon>201505061717249_Merge BaseLibrary 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505061907582_New CustomLookupItem class.resx">
+      <DependentUpon>201505061907582_New CustomLookupItem class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

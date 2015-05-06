@@ -16,5 +16,9 @@ namespace CcAcca.Library
         public LookupItem OrderStatus { get; set; }
 
         public int OrderStatusId { get; set; }
+
+        public CustomLookupItem OrderRecommendation { get; set; }
+
+        public int OrderRecommendationId { get; set; }
     }
 }

@@ -6,7 +6,7 @@ namespace CcAcca.BaseLibrary
 {
     public class BaseLibraryDbContext : DbContext
     {
-        private const string BaseSchemaName = "BaseLib";
+        public const string BaseSchemaName = "BaseLib";
 
         public BaseLibraryDbContext()
         {
