@@ -27,6 +27,11 @@ namespace CcAcca.BaseLibrary
             modelBuilder.Properties<string>().Configure(property => property.HasMaxLength(500));
 
             modelBuilder.Conventions.Add(DefaultSchemaConvention.AllTypesInAssemblyContaining<LookupItem>(BaseSchemaName));
+
+            // note: this is a workaround to the standard way of mapping Table-per-hierarchy mapping
+            // we're doing this so that a single table get's created in the schema we want
+            modelBuilder.Conventions.Add(TablePerHiearchyConvention.For<LookupItem>(schemaName: BaseSchemaName));
+
             modelBuilder.HasDefaultSchema(BaseSchemaName);
         }
 

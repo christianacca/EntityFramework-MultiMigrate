@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201505061907582_New CustomLookupItem class.Designer.cs">
       <DependentUpon>201505061907582_New CustomLookupItem class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505062002328_Replace migration - Subclass LookupItem.cs" />
+    <Compile Include="Migrations\201505062002328_Replace migration - Subclass LookupItem.Designer.cs">
+      <DependentUpon>201505062002328_Replace migration - Subclass LookupItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyMultiMigrateDbToLastestVersion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="SkippedMigrations.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\EntityFramework.MultiMigrate\EntityFramework.MultiMigrate.csproj">
@@ -93,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505061907582_New CustomLookupItem class.resx">
       <DependentUpon>201505061907582_New CustomLookupItem class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505062002328_Replace migration - Subclass LookupItem.resx">
+      <DependentUpon>201505062002328_Replace migration - Subclass LookupItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

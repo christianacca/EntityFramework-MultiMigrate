@@ -11,6 +11,7 @@ namespace CcAcca.LibraryMigrations
             base(new DbMigrationsConfiguration[] { new Configuration(), new BaseLibraryMigrations.Migrations.Configuration()}, 
             connectionStringName ?? new LibraryDbContext().Database.Connection.ConnectionString)
         {
+            SkippedMigrations = new[] { "Assembly:CcAcca.LibraryMigrations" };
         }
     }
 }
