@@ -50,6 +50,10 @@
     <Compile Include="Migrations\201504271803485_InitialCreate.Designer.cs">
       <DependentUpon>201504271803485_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505061709091_New Address class.cs" />
+    <Compile Include="Migrations\201505061709091_New Address class.Designer.cs">
+      <DependentUpon>201505061709091_New Address class.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +69,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201504271803485_InitialCreate.resx">
       <DependentUpon>201504271803485_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505061709091_New Address class.resx">
+      <DependentUpon>201505061709091_New Address class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
