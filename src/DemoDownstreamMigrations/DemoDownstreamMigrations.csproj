@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="SkippedMigrations.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412280922404_InitialCreate.resx">

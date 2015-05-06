@@ -72,6 +72,9 @@
     <None Include="CmdLineTests\run-multimigrate-eg2.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CmdLineTests\run-multimigrate-eg3.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CmdLineTests\run_db_migrations.bat" />
     <None Include="packages.config" />
     <None Include="CmdLineTests\skipped-migrations.json">

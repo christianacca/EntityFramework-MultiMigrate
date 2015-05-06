@@ -21,7 +21,7 @@ namespace MultiMigrate
         private const string StartUpConfigFileHelp = "Specifies the Web.config or App.config file of your application";
         private const string StartUpDataDirHelp = "Specifies the directory to use when resolving connection strings containing the |DataDirectory| substitution string.";
         private const string ConnectionStrNameHelp = "Specifies the name of the connection string to use from the specified configuration file. If omitted, the context's default connection will be used";
-        private const string SkippedMigrationsHelp = "Names of migrations that should be skipped; supply a comma seperated list or the path of a file that contains a json array of strings";
+        private const string SkippedMigrationsHelp = "Names of migrations that should be skipped; supply a comma seperated list of migration names, or a comma seperated list of assembly names in the form 'Assembly:Your.AssemblyName' which have an embedded resource named 'SkippedMigrations.json' that contain a json array of strings, or the path of a file that contains a json array of strings. Example of supply as a path to a file: -skippedMigrations@=skipped-migrations.json";
         private const string Help = "Multi-Configure Migrations Command Line Utility. Applies any pending migrations to the database";
 
         [Global(Description = StartUpDirHelp)]
@@ -70,7 +70,8 @@ namespace MultiMigrate
 
                 using (var migrationRunner = new MultiMigrateDbToLastestVsRunner(ms)
                 {
-                    SkippedMigrations = skippedMigrations
+                    SkippedMigrations = skippedMigrations,
+                    CurrentDirectory = GetWorkingDirectory()
                 })
                 {
                     migrationRunner.Run();

@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace CcAcca.EntityFramework.MultiMigrate.Tests.CmdLineTests
 {
-    [TestFixture]
+    [TestFixture, Ignore("Tests always pass because of incorrect CLI exit code")]
     public class MultiMigrationTests
     {
         [SetUp]
@@ -30,6 +30,13 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests.CmdLineTests
         public void CanMigrateToLatestVs_SkippedMigrationsAsCommaSeperatedList()
         {
             var exitCode = RunProgressDataImport("run-multimigrate-eg2.bat");
+            Assert.That(exitCode, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CanMigrateToLatestVs_SkippedMigrationsAsEmbeddedResource()
+        {
+            var exitCode = RunProgressDataImport("run-multimigrate-eg3.bat");
             Assert.That(exitCode, Is.EqualTo(0));
         }
 

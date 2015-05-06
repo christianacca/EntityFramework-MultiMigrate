@@ -71,6 +71,37 @@ namespace CcAcca.EntityFramework.MultiMigrate.Tests
             Assert.That(fakes, Is.Not.Empty);
         }
 
+        [Test]
+        public void CanUpgradeToLatestVs_SkippedMigrationsAsEmbeddedResource()
+        {
+            // when
+            var initializer = new DemoMultiMigrateDbToLastestVersion
+            {
+                SkippedMigrations = new[] { "Assembly:CcAcca.DemoDownstreamMigrations" }
+            };
+            initializer.InitializeDatabase(CreateDbContext());
+
+            // then...
+
+            var baseModelMigrator = new DbMigrator(new Configuration());
+            var baseMigrations = baseModelMigrator.GetDatabaseMigrations().ToList();
+            Assert.That(baseMigrations.Count, Is.EqualTo(5));
+
+            var migrator = new DbMigrator(new DemoDownstreamMigrations.Migrations.Configuration());
+            var migrations = migrator.GetDatabaseMigrations().ToList();
+            Assert.That(migrations.Count, Is.EqualTo(7));
+
+            // test that that the database supports the latest model
+            var db = CreateDbContext();
+            var userRole = new CustomUserRole { Key = 2, Name = "Whatever", CustomRoleProp = "Whatever"};
+            db.UserRoles.Add(userRole);
+            db.Assets.Add(new Asset {Reference = "Blah", Title = "Blah", RequiredUserRole = userRole});
+            db.SaveChanges();
+
+            List<FakeEntity> fakes = db.FakeEntities.ToList();
+            Assert.That(fakes, Is.Not.Empty);
+        }
+
 
         #region EF exploration tests
 
