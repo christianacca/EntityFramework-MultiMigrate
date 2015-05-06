@@ -18,7 +18,7 @@ namespace Library.Web.Controllers
         // GET: Orders
         public async Task<ActionResult> Index()
         {
-            var orders = db.Orders.Include(o => o.OrderStatus);
+            var orders = db.Orders.Include(o => o.OrderStatus).Include(o => o.OrderRecommendation);
             return View(await orders.ToListAsync());
         }
 
@@ -41,6 +41,7 @@ namespace Library.Web.Controllers
         public ActionResult Create()
         {
             ViewBag.OrderStatusId = GetOrderStatusSelectList();
+            ViewBag.OrderRecommendationId = GetOrderRecommendationSelectList();
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace Library.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId")] Order order)
+        public async Task<ActionResult> Create([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId,OrderRecommendationId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +60,7 @@ namespace Library.Web.Controllers
             }
 
             ViewBag.OrderStatusId = GetOrderStatusSelectList(order);
+            ViewBag.OrderRecommendationId = GetOrderRecommendationSelectList();
             return View(order);
         }
 
@@ -83,7 +85,7 @@ namespace Library.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId")] Order order)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,OrderDate,CustomerName,OrderStatusId,OrderRecommendationId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +94,7 @@ namespace Library.Web.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.OrderStatusId = GetOrderStatusSelectList(order);
+            ViewBag.OrderRecommendationId = GetOrderRecommendationSelectList();
             return View(order);
         }
 
@@ -101,6 +104,15 @@ namespace Library.Web.Controllers
             return new SelectList(db.LookupItems.Where(x => x.Lookup.Name == "Order Status"), "Id", "Description", orderStatusId);
         }
 
+        private SelectList GetOrderRecommendationSelectList(Order order = null)
+        {
+            int? orderRecommendationId = order != null ? order.OrderRecommendationId : (int?)null;
+            var query = db.LookupItems.OfType<CustomLookupItem>()
+                .Where(x => x.Lookup.Name == "Order Recommendation")
+                .OrderBy(i => i.Sequence);
+            return new SelectList(query, "Id", "Description", orderRecommendationId);
+        }
+
         // GET: Orders/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
@@ -108,7 +120,9 @@ namespace Library.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = await db.Orders.FindAsync(id);
+            Order order = await db.Orders.Include(o => o.OrderStatus)
+                .Include(o => o.OrderRecommendation)
+                .SingleOrDefaultAsync(o => o.Id == id);
             if (order == null)
             {
                 return HttpNotFound();
